@@ -11,13 +11,15 @@
     tools:context="com.konka.downloadbuttontest.MainActivity">
 
     <com.konka.customui.DownloadButon
+        android:id="@+id/button"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:background="#ccc"
-        android:paddingBottom="40dp"
+        android:background="#cccccc"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:paddingLeft="20dp"
-        app:exampleColor="#33b5e5"
-        app:exampleDimension="24sp"
-        app:exampleDrawable="@android:drawable/ic_menu_add"
-        app:exampleString="Hello, DownloadButon" />
+        android:paddingRight="20dp"
+        app:paintWidth="10dp"
+        app:paintColor="#3a639c"
+        app:exampleDrawable="@android:drawable/ic_menu_add" />
 </RelativeLayout>

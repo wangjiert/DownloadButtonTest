@@ -1,8 +1,7 @@
 <resources>
     <declare-styleable name="DownloadButon">
-        <attr name="exampleString" format="string" />
-        <attr name="exampleDimension" format="dimension" />
-        <attr name="exampleColor" format="color" />
         <attr name="exampleDrawable" format="color|reference" />
+        <attr name="paintColor" format="color" />
+        <attr name="paintWidth" format="dimension" />
     </declare-styleable>
 </resources>
