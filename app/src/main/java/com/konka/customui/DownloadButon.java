@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 
 import com.konka.downloadbuttontest.R;
 
@@ -122,7 +123,8 @@ public class DownloadButon extends View {
         completeAnimator.addUpdateListener(animatorUpdateListener);
         completeAnimator.setInterpolator(new BounceInterpolator());
         colorAnimator = ValueAnimator.ofInt(0x00,0xFF);
-        colorAnimator.setDuration(3000);
+        colorAnimator.setDuration(800);
+        colorAnimator.setInterpolator(new DecelerateInterpolator());
         colorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
@@ -135,8 +137,7 @@ public class DownloadButon extends View {
     }
 
     private void setPaintAlpha(int value) {
-        //alphaPaint.setColor(value<<24 +paintColor);
-        Log.i("test",(paintColor)+"color");
+        alphaPaint.setColor((value << 24) +paintColor);
     }
 
     public void setTotalPosition (float totalPosition) {
@@ -182,7 +183,7 @@ public class DownloadButon extends View {
             drawDrawable.draw(canvas);
         }
         else{
-            RectF rectF1 = new RectF(paddingLeft + paintWidth, paddingTop + paintWidth, getWidth() - paddingRight - paintWidth, getHeight() - paddingBottom - paintWidth);
+            RectF rectF1 = new RectF(paddingLeft + paintWidth / 2, paddingTop + paintWidth / 2, getWidth() - paddingRight - paintWidth / 2, getHeight() - paddingBottom - paintWidth / 2);
             canvas.drawOval(rectF1, alphaPaint);
             canvas.drawArc(rectF, startAngle, 360, false, paint);
             drawDrawable.setBounds(left, drawableTop, left + width, drawableTop + height);
