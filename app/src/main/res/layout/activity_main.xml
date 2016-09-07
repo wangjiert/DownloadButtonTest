@@ -12,15 +12,15 @@
 
     <com.konka.customui.DownloadButon
         android:id="@+id/button"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="#cccccc"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         app:paintWidth="10dp"
-        app:paintColor="#3a639c"
+        app:paintColor="#517ab3"
         app:startDrawable="@drawable/start"
         app:completeDrawable="@drawable/complete" />
 </RelativeLayout>
