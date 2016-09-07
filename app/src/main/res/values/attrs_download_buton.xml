@@ -1,6 +1,7 @@
 <resources>
     <declare-styleable name="DownloadButon">
-        <attr name="exampleDrawable" format="color|reference" />
+        <attr name="startDrawable" format="reference" />
+        <attr name="completeDrawable" format="reference" />
         <attr name="paintColor" format="color" />
         <attr name="paintWidth" format="dimension" />
     </declare-styleable>

@@ -18,7 +18,7 @@ import com.konka.downloadbuttontest.R;
  * TODO: document your custom view class.
  */
 public class DownloadButon extends View {
-    private Drawable mExampleDrawable;
+    private Drawable startDrawable;
     private Paint paint;
     private float paintWidth = 40;                  //painstrokewidth的初始值
     private final float startAngle = -90;
@@ -47,10 +47,10 @@ public class DownloadButon extends View {
 
         paintWidth = a.getDimension(R.styleable.DownloadButon_paintWidth, paintWidth);
         paintColor = a.getColor(R.styleable.DownloadButon_paintColor, paintColor);
-        if (a.hasValue(R.styleable.DownloadButon_exampleDrawable)) {
-            mExampleDrawable = a.getDrawable(
-                    R.styleable.DownloadButon_exampleDrawable);
-            mExampleDrawable.setCallback(this);
+        if (a.hasValue(R.styleable.DownloadButon_startDrawable)) {
+            startDrawable = a.getDrawable(
+                    R.styleable.DownloadButon_startDrawable);
+            startDrawable.setCallback(this);
         }
         a.recycle();
         paint = new Paint();
@@ -80,13 +80,12 @@ public class DownloadButon extends View {
         int contentWidth = getWidth() - paddingLeft - paddingRight;
         int contentHeight = getHeight() - paddingTop - paddingBottom;
         canvas.drawArc(new RectF(paddingLeft + paintWidth / 2, paddingTop + paintWidth / 2, getWidth() - paddingRight - paintWidth / 2, getHeight() - paddingBottom - paintWidth / 2), startAngle, currentPosition * 360 / totalPosition, false, paint);
-    }
-
-    public Drawable getExampleDrawable() {
-        return mExampleDrawable;
-    }
-
-    public void setExampleDrawable(Drawable exampleDrawable) {
-        mExampleDrawable = exampleDrawable;
+        int width = startDrawable.getIntrinsicWidth();
+        int height = startDrawable.getIntrinsicHeight();
+        int left = (getWidth() - width) / 2;
+        int top = (getHeight() - height) /2;
+        startDrawable.setBounds(left, top, left + width,top + height);
+        startDrawable.draw(canvas);
+        
     }
 }

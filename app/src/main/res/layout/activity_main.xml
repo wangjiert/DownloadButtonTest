@@ -21,5 +21,6 @@
         android:paddingRight="20dp"
         app:paintWidth="10dp"
         app:paintColor="#3a639c"
-        app:exampleDrawable="@android:drawable/ic_menu_add" />
+        app:startDrawable="@drawable/start"
+        app:completeDrawable="@drawable/complete" />
 </RelativeLayout>
