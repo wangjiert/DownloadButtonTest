@@ -28,6 +28,7 @@ public class DownloadButon extends View {
     private Drawable completeDrawable;
     private Drawable drawDrawable;
     private Paint paint;
+    private Paint alphaPaint;
     private float paintWidth = 40;                  //painstrokewidth的初始值
     private final float startAngle = -90;
     private float totalPosition;
@@ -37,6 +38,7 @@ public class DownloadButon extends View {
     private ValueAnimator drawableUpAnimator;
     private ValueAnimator drawableDownAnimator;
     private ValueAnimator completeAnimator;
+    private ValueAnimator colorAnimator;
     private AnimatorSet animatorSet = new AnimatorSet();
     public DownloadButon(Context context) {
         super(context);
@@ -78,6 +80,10 @@ public class DownloadButon extends View {
             completeDrawable.setCallback(this);
         }
         a.recycle();
+        alphaPaint = new Paint();
+        alphaPaint.setAntiAlias(true);
+        alphaPaint.setStyle(Paint.Style.FILL);
+        alphaPaint.setColor(0x88517ab3);
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStrokeCap(Paint.Cap.ROUND);
@@ -115,8 +121,22 @@ public class DownloadButon extends View {
         completeAnimator.setDuration(600);
         completeAnimator.addUpdateListener(animatorUpdateListener);
         completeAnimator.setInterpolator(new BounceInterpolator());
+        colorAnimator = ValueAnimator.ofInt(0x00,0xFF);
+        colorAnimator.setDuration(3000);
+        colorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                setPaintAlpha((int)valueAnimator.getAnimatedValue());
+            }
+        });
         animatorSet.play(drawableUpAnimator).before(drawableDownAnimator);
         animatorSet.play(drawableDownAnimator).before(completeAnimator);
+        animatorSet.play(drawableUpAnimator).with(colorAnimator);
+    }
+
+    private void setPaintAlpha(int value) {
+        //alphaPaint.setColor(value<<24 +paintColor);
+        Log.i("test",(paintColor)+"color");
     }
 
     public void setTotalPosition (float totalPosition) {
@@ -163,6 +183,7 @@ public class DownloadButon extends View {
         }
         else{
             RectF rectF1 = new RectF(paddingLeft + paintWidth, paddingTop + paintWidth, getWidth() - paddingRight - paintWidth, getHeight() - paddingBottom - paintWidth);
+            canvas.drawOval(rectF1, alphaPaint);
             canvas.drawArc(rectF, startAngle, 360, false, paint);
             drawDrawable.setBounds(left, drawableTop, left + width, drawableTop + height);
             drawDrawable.draw(canvas);
