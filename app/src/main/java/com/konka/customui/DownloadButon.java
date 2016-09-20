@@ -17,13 +17,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 
 import com.konka.downloadbuttontest.R;
 
 /**
  * TODO: document your custom view class.
  */
-public class DownloadButon extends View {
+public class DownloadButon extends Button {
     private int drawableBlank = 40;
     private Drawable startDrawable;
     private Drawable completeDrawable;
