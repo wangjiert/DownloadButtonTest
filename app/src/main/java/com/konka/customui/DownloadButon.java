@@ -122,7 +122,7 @@ public class DownloadButon extends Button {
         completeAnimator = ValueAnimator.ofInt(0, (int) (height - drawDrawable.getIntrinsicHeight()) / 2);
         completeAnimator.setDuration(600);
         completeAnimator.addUpdateListener(animatorUpdateListener);
-        completeAnimator.setInterpolator(new BounceInterpolator());
+        completeAnimator.setInterpolator(new CustomInterpolator());
         colorAnimator = ValueAnimator.ofInt(0x00,0xFF);
         colorAnimator.setDuration(800);
         colorAnimator.setInterpolator(new DecelerateInterpolator());
