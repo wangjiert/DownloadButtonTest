@@ -120,7 +120,7 @@ public class DownloadButon extends Button {
             }
         });
         completeAnimator = ValueAnimator.ofInt(0, (int) (height - drawDrawable.getIntrinsicHeight()) / 2);
-        completeAnimator.setDuration(600);
+        completeAnimator.setDuration(1200);
         completeAnimator.addUpdateListener(animatorUpdateListener);
         completeAnimator.setInterpolator(new CustomInterpolator());
         colorAnimator = ValueAnimator.ofInt(0x00,0xFF);
@@ -168,7 +168,7 @@ public class DownloadButon extends Button {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
         int paddingRight = getPaddingRight();
@@ -190,7 +190,7 @@ public class DownloadButon extends Button {
             drawDrawable.setBounds(left, drawableTop, left + width, drawableTop + height);
             drawDrawable.draw(canvas);
         }
-
+        super.onDraw(canvas);
 
     }
 }
